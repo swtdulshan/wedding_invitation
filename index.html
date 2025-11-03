@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anjana 💕 Nandeesha — Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      background: url('./background.jpg') center/cover fixed no-repeat;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: -1;
+    }
+
+    header {
+      padding: 70px 20px 40px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5em;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #f8e8ef;
+    }
+
+    .save-date {
+      font-size: 1.3em;
+      color: #ffd6ec;
+      margin-top: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px gold;
+    }
+
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin: 50px 0;
+      animation: fadeIn 3s ease;
+    }
+
+    .photo-gallery img {
+      width: 270px;
+      height: 370px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .photo-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .timer {
+      margin: 60px 0;
+      color: #fff;
+      animation: fadeIn 4s ease;
+    }
+
+    .timer p {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+
+    #timeTogether {
+      margin: 10px 0;
+      font-size: 1.5em;
+      color: #fff8f8;
+    }
+
+    #countdown {
+      margin-top: 10px;
+      font-size: 2.3em;
+      font-weight: bold;
+      color: #ffdeec;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #f5dce6;
+    }
+
+    /* Floating Hearts */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 192, 203, 0.8);
+      transform: rotate(45deg);
+      animation: float 7s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 192, 203, 0.8);
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: 9px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🎵 Music Button */
+    #musicControl {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    #musicControl:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts"></div>
+
+  <header>
+    <h1>Anjana 💖 Nandeesha</h1>
+    <h2>Join us in celebrating our eternal love</h2>
+    <div class="save-date">💍 Save the Date — December 06, 2025 💍</div>
+  </header>
+
+  <!-- 🎶 Background Music -->
+  <audio id="bgMusic" loop autoplay>
+    <source src="./guitar.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+
+  <!-- 🎵 Music Control Button -->
+  <button id="musicControl" title="Toggle Music">🔊</button>
+
+  <!-- 💞 Photo Gallery -->
+  <section class="photo-gallery">
+    <img src="./anjana_1.jpeg" alt="Couple 1" />
+    <img src="./anjana_2.jpeg" alt="Couple 2" />
+    <img src="./anjana_1.jpeg" alt="Couple 3" />
+    <img src="./anjana_2.jpeg" alt="Couple 4" />
+  </section>
+
+  <!-- ⏱ Time Calculator + Countdown -->
+  <section class="timer">
+    <p>We’ve been together for:</p>
+    <div id="timeTogether"></div>
+    <hr style="width:60%; margin:20px auto; border-color:#f7cce1;" />
+    <p>Countdown to Our Wedding Day 💍</p>
+    <div id="countdown"></div>
+  </section>
+
+  <footer>
+    Made with ❤️ by Anjana & Nandeesha | #FourElementz
+  </footer>
+
+  <script>
+    // Floating Hearts Animation
+    const heartsContainer = document.querySelector(".hearts");
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 5 + Math.random() * 3 + "s";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 300);
+
+    // Time Together Calculator
+    const startDate = new Date("2022-02-14T00:00:00");
+    function updateTimeTogether() {
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const years = Math.floor(days / 365);
+      const months = Math.floor((days % 365) / 30);
+      const remainingDays = days - (years * 365 + months * 30);
+      document.getElementById("timeTogether").innerText =
+        `${years} Years, ${months} Months, ${remainingDays} Days`;
+    }
+    setInterval(updateTimeTogether, 1000);
+    updateTimeTogether();
+
+    // Wedding Countdown
+    const weddingDate = new Date("2025-12-06T16:00:00");
+    function updateCountdown() {
+      const now = new Date();
+      const distance = weddingDate - now;
+      if (distance < 0) {
+        document.getElementById("countdown").innerText = "💖 Happily Married 💖";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+      document.getElementById("countdown").innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 🎵 Music Control
+    const bgMusic = document.getElementById("bgMusic");
+    const musicControl = document.getElementById("musicControl");
+    let isPlaying = true;
+    musicControl.addEventListener("click", () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicControl.textContent = "🔇";
+      } else {
+        bgMusic.play();
+        musicControl.textContent = "🔊";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
