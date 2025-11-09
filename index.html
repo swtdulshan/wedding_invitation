@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-  /* ===== STYLES & ANIMATIONS ===== */
   :root {
     --accent: #D4AF37;
     --muted: rgba(255,255,255,0.9);
@@ -34,20 +33,11 @@
 
   /* ===== HERO ===== */
   .hero {
-    height:100vh;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    background:url('./anjana_1.jpeg') center/cover no-repeat;
-    position:relative;
-    text-align:center;
+    height:100vh; display:flex; align-items:flex-end; justify-content:center;
+    background:url('./anjana_1.jpeg') center/cover no-repeat; position:relative; text-align:center;
   }
-  .hero::after {
-    content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45);
-  }
-  .hero-inner {
-    position:relative; z-index:2; color:#fff; padding-bottom:120px;
-  }
+  .hero::after {content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45);}
+  .hero-inner {position:relative; z-index:2; color:#fff; padding-bottom:120px;}
   .top-sub {font-family:'Playfair Display',serif;font-size:20px;color:var(--muted);}
   .couple {font-family:'Great Vibes',cursive;font-size:6vw;text-shadow:0 3px 15px #000;}
   .date {letter-spacing:6px;margin-top:8px;color:var(--muted);}
@@ -106,7 +96,10 @@
   .wishes-inner {position:relative;z-index:2;max-width:600px;padding:20px;}
   .wishes-inner h2 {font-family:'Great Vibes',cursive;font-size:3.2rem;color:var(--accent);margin-bottom:10px;}
   .wishes-inner p {font-size:1.05rem;margin-bottom:20px;color:#333;}
-  .wishes-inner textarea {width:100%;height:120px;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:10px;font-family:'Poppins';}
+  .wishes-inner input, .wishes-inner textarea {
+    width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:10px;font-family:'Poppins';
+  }
+  .wishes-inner textarea {height:120px;}
   .wishes-inner button {background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:30px;cursor:pointer;font-weight:600;}
   .wishes-inner button:hover {opacity:0.85;}
 
@@ -132,7 +125,7 @@
     </div>
   </section>
 
-  <!-- ===== INVITATION CARD (with fade-up animations) ===== -->
+  <!-- ===== INVITATION CARD ===== -->
   <section class="card-wrap" id="invitation">
     <div class="invitation-card fade-up">
       <div class="invitation-inner">
@@ -184,8 +177,13 @@
     <div class="wishes-inner fade-up">
       <h2>Wishes &amp; RSVP</h2>
       <p>Send us your blessings or confirm your attendance.</p>
-      <textarea placeholder="Write your wishes here..."></textarea>
-      <button onclick="alert('Thank you for your wishes! ❤️')">Send</button>
+      <input id="guestName" type="text" placeholder="Your Name">
+      <textarea id="guestMessage" placeholder="Write your wishes here..."></textarea>
+      <button id="sendWish">Send</button>
+
+      <hr style="margin:30px 0; border:none; border-top:1px solid #ccc;">
+      <h3 style="margin-bottom:15px; color:#333;">💌 Guest Wishes</h3>
+      <div id="wishesList" style="max-height:300px;overflow-y:auto;text-align:left;"></div>
     </div>
   </section>
 
@@ -199,7 +197,6 @@
   /* ===== MUSIC CONTROL ===== */
   const audio = document.getElementById('bgAudio');
   const btn = document.getElementById('musicControl');
-  let playing = false;
   btn.addEventListener('click', () => {
     if (audio.paused) { audio.play(); btn.textContent = '🔊'; }
     else { audio.pause(); btn.textContent = '🔇'; }
@@ -241,7 +238,57 @@
     });
   }, { threshold: 0.2 });
   animatedEls.forEach(el => observer.observe(el));
-  </script>
 
+  /* ===== WISHES: Google Sheets Integration ===== */
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwDtuTzaTjjr4_A8XlKOfEkp6f_IMDS0iRYTydsJvloO_MbU7eIY28Zllxr-bd8WKAQ/exec";
+
+  document.getElementById("sendWish").addEventListener("click", async () => {
+    const name = document.getElementById("guestName").value.trim();
+    const message = document.getElementById("guestMessage").value.trim();
+    if (!name || !message) { alert("Please enter your name and message 💬"); return; }
+
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify({ name, message }),
+        headers: { "Content-Type": "application/json" }
+      });
+      alert("Thank you for your wishes! ❤️");
+      document.getElementById("guestName").value = "";
+      document.getElementById("guestMessage").value = "";
+      loadWishes();
+    } catch (err) {
+      console.error(err);
+      alert("Error sending wish 😢");
+    }
+  });
+
+  async function loadWishes() {
+    const list = document.getElementById("wishesList");
+    list.innerHTML = "<p>Loading wishes...</p>";
+    try {
+      const res = await fetch(scriptURL);
+      const wishes = await res.json();
+      list.innerHTML = "";
+      wishes.reverse().forEach(w => {
+        const div = document.createElement("div");
+        div.style.marginBottom = "15px";
+        div.innerHTML = `
+          <div style="background:rgba(255,255,255,0.9);padding:12px 15px;border-radius:10px;">
+            <strong style="color:#D4AF37;">${w.name}</strong><br>
+            <span style="color:#444;">${w.message}</span><br>
+            <small style="color:#777;">${new Date(w.time).toLocaleString()}</small>
+          </div>`;
+        list.appendChild(div);
+      });
+      if (!wishes.length) list.innerHTML = "<p>No wishes yet — be the first 💕</p>";
+    } catch (err) {
+      console.error(err);
+      list.innerHTML = "<p>Could not load wishes 😢</p>";
+    }
+  }
+
+  loadWishes();
+  </script>
 </body>
 </html>
