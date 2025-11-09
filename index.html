@@ -16,29 +16,23 @@
   * {box-sizing:border-box; margin:0; padding:0;}
   body {font-family:'Poppins', sans-serif; color:#111; overflow-x:hidden;}
 
-  /* --- ANIMATIONS --- */
   @keyframes fadeUp {
     from {opacity:0; transform:translateY(40px);}
     to {opacity:1; transform:none;}
   }
-  .fade-up {
-    animation:fadeUp 1.2s ease both;
-    animation-play-state:paused;
-  }
+  .fade-up {animation:fadeUp 1.2s ease both; animation-play-state:paused;}
+
   @keyframes bounce {
     0%,100% {transform:translateY(0) rotate(-45deg);}
     50% {transform:translateY(-10px) rotate(-45deg);}
   }
 
-  /* ===== HERO ===== */
+  /* --- Sections --- */
   .hero {
     height:100vh;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
+    display:flex; align-items:flex-end; justify-content:center;
     background:url('./anjana_1.jpeg') center/cover no-repeat;
-    position:relative;
-    text-align:center;
+    position:relative; text-align:center;
   }
   .hero::after {content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45);}
   .hero-inner {position:relative; z-index:2; color:#fff; padding-bottom:120px;}
@@ -49,7 +43,6 @@
   .swipe .arrow {display:inline-block;width:30px;height:30px;border-left:3px solid var(--muted);
     border-bottom:3px solid var(--muted);transform:rotate(-45deg);animation:bounce 1.8s infinite;}
 
-  /* ===== INVITATION CARD ===== */
   .card-wrap {
     min-height:100vh;display:flex;align-items:center;justify-content:center;
     padding:60px 20px;background:#f8f5f7;
@@ -68,7 +61,6 @@
   .parents {margin-top:16px;line-height:1.6;}
   footer.inv {margin-top:22px;font-size:0.95rem;color:#555;line-height:1.7;}
 
-  /* ===== CEREMONY ===== */
   .ceremony {
     height:100vh;background:url('./anjana_2.jpeg') center/cover no-repeat;position:relative;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;
@@ -76,13 +68,9 @@
   .ceremony::after {content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
   .ceremony-inner {position:relative;z-index:2;max-width:600px;padding:20px;}
   .ceremony-inner h2 {font-family:'Great Vibes',cursive;font-size:3.5rem;margin-bottom:10px;}
-  .ceremony-inner p {font-size:1.1rem;}
   .countdown {display:flex;justify-content:center;gap:18px;margin-top:20px;}
-  .countdown div{text-align:center;}
   .countdown span{display:block;font-size:1.8rem;font-weight:600;}
-  .countdown label{font-size:0.8rem;color:var(--muted);}
 
-  /* ===== GALLERY ===== */
   .gallery {
     height:100vh;background:#000;display:flex;align-items:center;justify-content:center;
     position:relative;overflow:hidden;
@@ -91,7 +79,7 @@
   .gallery img.active {opacity:1;}
   .gallery-caption {position:absolute;bottom:20px;width:100%;text-align:center;color:#fff;font-size:1rem;}
 
-  /* ===== WISHES ===== */
+  /* --- Wishes --- */
   .wishes {
     min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:url('./background.jpeg') center/cover no-repeat;position:relative;text-align:center;
@@ -112,13 +100,12 @@
     max-height:300px;overflow-y:auto;text-align:left;margin-top:20px;
   }
   .wish-item {
-    background:rgba(255,255,255,0.8);padding:12px 15px;border-radius:10px;margin-bottom:10px;
+    background:rgba(255,255,255,0.9);padding:12px 15px;border-radius:10px;margin-bottom:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.05);
   }
   .wish-name {font-weight:600;color:var(--accent);}
   .wish-text {color:#333;margin-top:4px;font-size:0.95rem;}
 
-  /* ===== MUSIC CONTROL ===== */
   .music-control {
     position:fixed;right:22px;bottom:22px;width:56px;height:56px;
     background:rgba(255,255,255,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -128,8 +115,8 @@
 </head>
 <body>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
+  <!-- HERO -->
+  <section class="hero">
     <div class="hero-inner fade-up">
       <div class="top-sub">The Marriage of</div>
       <div class="couple">Anjana &amp; Nandeesha</div>
@@ -140,7 +127,7 @@
     </div>
   </section>
 
-  <!-- ===== INVITATION CARD ===== -->
+  <!-- INVITATION -->
   <section class="card-wrap" id="invitation">
     <div class="invitation-card fade-up">
       <div class="invitation-inner">
@@ -158,12 +145,12 @@
     </div>
   </section>
 
-  <!-- ===== CEREMONY ===== -->
+  <!-- CEREMONY -->
   <section class="ceremony" id="ceremony">
     <div class="ceremony-inner fade-up">
       <h2>Poruwa Ceremony</h2>
       <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>on 06 December 2025 at Kingsbay Hotel</p>
-      <div class="countdown" id="countdown">
+      <div class="countdown">
         <div><span id="days">0</span><label>Days</label></div>
         <div><span id="hours">0</span><label>Hours</label></div>
         <div><span id="minutes">0</span><label>Minutes</label></div>
@@ -172,22 +159,20 @@
     </div>
   </section>
 
-  <!-- ===== GALLERY ===== -->
-  <section class="gallery" id="gallery">
-    <img src="./anjana_3.jpeg" class="active" alt="Couple photo 1">
-    <img src="./anjana_4.jpeg" alt="Couple photo 2">
-    <img src="./anjana_5.jpeg" alt="Couple photo 3">
-    <img src="./anjana_6.jpeg" alt="Couple photo 4">
-    <img src="./anjana_7.jpeg" alt="Couple photo 5">
-    <img src="./anjana_8.jpeg" alt="Couple photo 6">
-    <img src="./anjana_9.jpeg" alt="Couple photo 7">
-    <img src="./anjana_10.jpeg" alt="Couple photo 8">
-    <img src="./anjana_11.jpeg" alt="Couple photo 9">
-    <img src="./anjana_12.jpeg" alt="Couple photo 10">
+  <!-- GALLERY -->
+  <section class="gallery">
+    <img src="./anjana_3.jpeg" class="active">
+    <img src="./anjana_4.jpeg">
+    <img src="./anjana_5.jpeg">
+    <img src="./anjana_6.jpeg">
+    <img src="./anjana_7.jpeg">
+    <img src="./anjana_8.jpeg">
+    <img src="./anjana_9.jpeg">
+    <img src="./anjana_10.jpeg">
     <div class="gallery-caption">Our Journey Together</div>
   </section>
 
-  <!-- ===== WISHES ===== -->
+  <!-- WISHES -->
   <section class="wishes" id="wishes">
     <div class="wishes-inner fade-up">
       <h2>Wishes &amp; RSVP</h2>
@@ -195,103 +180,91 @@
       <input id="guestName" type="text" placeholder="Your Name">
       <textarea id="guestMessage" placeholder="Write your wishes here..."></textarea>
       <button id="sendWish">Send</button>
-      <div id="statusMsg" style="margin-top:10px;color:green;font-weight:600;"></div>
+      <div id="statusMsg" style="margin-top:10px;font-weight:600;"></div>
       <hr style="margin:30px 0; border:none; border-top:1px solid #ccc;">
       <h3 style="margin-bottom:15px; color:#333;">💌 Guest Wishes</h3>
       <div id="wishesList"></div>
     </div>
   </section>
 
-  <!-- ===== MUSIC ===== -->
-  <audio id="bgAudio" loop>
-    <source src="./guitar.mp3" type="audio/mpeg">
-  </audio>
+  <!-- MUSIC -->
+  <audio id="bgAudio" loop><source src="./guitar.mp3" type="audio/mpeg"></audio>
   <div class="music-control" id="musicControl">🔊</div>
 
   <script>
-  /* ===== MUSIC CONTROL ===== */
   const audio = document.getElementById('bgAudio');
   const btn = document.getElementById('musicControl');
-  btn.addEventListener('click', () => {
-    if (audio.paused) { audio.play(); btn.textContent = '🔊'; }
-    else { audio.pause(); btn.textContent = '🔇'; }
-  });
+  btn.onclick = () => { if(audio.paused){audio.play();btn.textContent='🔊';} else {audio.pause();btn.textContent='🔇';} };
 
-  /* ===== COUNTDOWN ===== */
+  // Countdown
   const target = new Date("December 6, 2025 10:00:00").getTime();
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = target - now;
-    if (diff < 0) return;
-    document.getElementById('days').textContent = Math.floor(diff / (1000*60*60*24));
-    document.getElementById('hours').textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    document.getElementById('minutes').textContent = Math.floor((diff%(1000*60*60))/(1000*60));
-    document.getElementById('seconds').textContent = Math.floor((diff%(1000*60))/1000);
-  }, 1000);
+  setInterval(()=>{
+    const diff = target - new Date().getTime();
+    if(diff<0)return;
+    document.getElementById('days').textContent=Math.floor(diff/(1000*60*60*24));
+    document.getElementById('hours').textContent=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    document.getElementById('minutes').textContent=Math.floor((diff%(1000*60*60))/(1000*60));
+    document.getElementById('seconds').textContent=Math.floor((diff%(1000*60))/1000);
+  },1000);
 
-  /* ===== GALLERY ===== */
-  const imgs = document.querySelectorAll('.gallery img');
-  let i = 0;
-  setInterval(() => {
-    imgs[i].classList.remove('active');
-    i = (i + 1) % imgs.length;
-    imgs[i].classList.add('active');
-  }, 3000);
+  // Gallery
+  const imgs=document.querySelectorAll('.gallery img');let i=0;
+  setInterval(()=>{imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');},3000);
 
-  /* ===== FADE-UP ANIMATION ===== */
-  const animatedEls = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animationPlayState = 'running';
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  animatedEls.forEach(el => observer.observe(el));
+  // Animations
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.animationPlayState='running';observer.unobserve(e.target);}});},{threshold:0.2});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-  /* ===== GOOGLE SHEET WISHES ===== */
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwDtuTzaTjjr4_A8XlKOfEkp6f_IMDS0iRYTydsJvloO_MbU7eIY28Zllxr-bd8WKAQ/exec";
+  // Wishes System
+  const scriptURL="https://script.google.com/macros/s/AKfycbwDtuTzaTjjr4_A8XlKOfEkp6f_IMDS0iRYTydsJvloO_MbU7eIY28Zllxr-bd8WKAQ/exec";
 
-  async function loadWishes() {
-    const res = await fetch(scriptURL);
-    const data = await res.json();
-    const list = document.getElementById("wishesList");
-    list.innerHTML = "";
-    data.reverse().forEach(wish => {
-      const div = document.createElement("div");
-      div.className = "wish-item";
-      div.innerHTML = `<div class='wish-name'>${wish.name}</div><div class='wish-text'>${wish.message}</div>`;
-      list.appendChild(div);
-    });
+  async function loadWishes(){
+    try{
+      const res=await fetch(scriptURL+"?v="+Date.now()); // prevent cache
+      const data=await res.json();
+      const list=document.getElementById("wishesList");
+      list.innerHTML="";
+      data.reverse().forEach(wish=>{
+        const div=document.createElement("div");
+        div.className="wish-item";
+        div.innerHTML=`<div class='wish-name'>${wish.name}</div><div class='wish-text'>${wish.message}</div>`;
+        list.appendChild(div);
+      });
+    }catch(err){console.error("Load error",err);}
   }
 
-  async function sendWish() {
-    const name = document.getElementById("guestName").value.trim();
-    const message = document.getElementById("guestMessage").value.trim();
-    const status = document.getElementById("statusMsg");
-    if (!name || !message) {
-      status.style.color = "red";
-      status.textContent = "Please enter your name and message!";
-      return;
+  async function sendWish(){
+    const name=document.getElementById("guestName").value.trim();
+    const message=document.getElementById("guestMessage").value.trim();
+    const status=document.getElementById("statusMsg");
+    if(!name||!message){status.style.color="red";status.textContent="Please enter your name and message!";return;}
+    status.style.color="gray";status.textContent="Sending...";
+    
+    // Instantly add to the list (optimistic UI)
+    const list=document.getElementById("wishesList");
+    const div=document.createElement("div");
+    div.className="wish-item";
+    div.innerHTML=`<div class='wish-name'>${name}</div><div class='wish-text'>${message}</div>`;
+    list.prepend(div);
+
+    // Send to Google Sheets
+    try{
+      await fetch(scriptURL,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({name,message})
+      });
+      status.style.color="green";
+      status.textContent="Thank you for your wish ❤️";
+      document.getElementById("guestName").value="";
+      document.getElementById("guestMessage").value="";
+    }catch(e){
+      status.style.color="red";status.textContent="Error sending wish. Try again.";
     }
-    status.style.color = "gray";
-    status.textContent = "Sending...";
-    await fetch(scriptURL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name, message })
-});
-
-    status.style.color = "green";
-    status.textContent = "Thank you for your wish! ❤️";
-    document.getElementById("guestName").value = "";
-    document.getElementById("guestMessage").value = "";
-    setTimeout(loadWishes, 1000);
   }
 
-  document.getElementById("sendWish").addEventListener("click", sendWish);
-  window.addEventListener("load", loadWishes);
+  document.getElementById("sendWish").addEventListener("click",sendWish);
+  window.addEventListener("load",loadWishes);
   </script>
 
 </body>
