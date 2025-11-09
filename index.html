@@ -8,30 +8,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-  /* ===== 1. STYLES & ANIMATIONS ===== */
+  /* ===== STYLES & ANIMATIONS ===== */
   :root {
     --accent: #D4AF37;
     --muted: rgba(255,255,255,0.9);
   }
   html, body {height:100%; scroll-behavior:smooth;}
   * {box-sizing:border-box; margin:0; padding:0;}
-  body {
-    font-family:'Poppins', sans-serif;
-    color:#111;
-    overflow-x:hidden;
-  }
+  body {font-family:'Poppins', sans-serif; color:#111; overflow-x:hidden;}
 
-  /* --- CSS ANIMATIONS --- */
+  /* --- ANIMATIONS --- */
   @keyframes fadeUp {
     from {opacity:0; transform:translateY(40px);}
     to {opacity:1; transform:none;}
   }
-  @keyframes fadeIn {
-    from {opacity:0;}
-    to {opacity:1;}
+  .fade-up {
+    animation:fadeUp 1.2s ease both;
+    animation-play-state:paused;
   }
-  .fade-up {animation:fadeUp 1.2s ease both; animation-play-state:paused;}
-  .fade-in {animation:fadeIn 1.2s ease both; animation-play-state:paused;}
+
   @keyframes bounce {
     0%,100% {transform:translateY(0) rotate(-45deg);}
     50% {transform:translateY(-10px) rotate(-45deg);}
@@ -48,221 +43,81 @@
     text-align:center;
   }
   .hero::after {
-    content:'';
-    position:absolute; inset:0;
-    background:rgba(0,0,0,0.45);
+    content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45);
   }
   .hero-inner {
-    position:relative;
-    z-index:2;
-    color:#fff;
-    padding-bottom:120px;
+    position:relative; z-index:2; color:#fff; padding-bottom:120px;
   }
-  .top-sub {
-    font-family:'Playfair Display', serif;
-    font-size:20px;
-    color:var(--muted);
-  }
-  .couple {
-    font-family:'Great Vibes', cursive;
-    font-size:6vw;
-    text-shadow:0 3px 15px #000;
-  }
-  .date {
-    letter-spacing:6px;
-    margin-top:8px;
-    color:var(--muted);
-  }
-  .swipe {
-    margin-top:30px;
-    color:var(--muted);
-    font-size:0.9rem;
-    cursor:pointer;
-  }
-  .swipe .arrow {
-    display:inline-block;
-    width:30px; height:30px;
-    border-left:3px solid var(--muted);
-    border-bottom:3px solid var(--muted);
-    transform:rotate(-45deg);
-    animation:bounce 1.8s infinite;
-  }
+  .top-sub {font-family:'Playfair Display',serif;font-size:20px;color:var(--muted);}
+  .couple {font-family:'Great Vibes',cursive;font-size:6vw;text-shadow:0 3px 15px #000;}
+  .date {letter-spacing:6px;margin-top:8px;color:var(--muted);}
+  .swipe {margin-top:30px;color:var(--muted);font-size:0.9rem;cursor:pointer;}
+  .swipe .arrow {display:inline-block;width:30px;height:30px;border-left:3px solid var(--muted);
+    border-bottom:3px solid var(--muted);transform:rotate(-45deg);animation:bounce 1.8s infinite;}
 
-  /* ===== CARD ===== */
+  /* ===== INVITATION CARD ===== */
   .card-wrap {
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:60px 20px;
-    background:#f8f5f7;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:60px 20px;background:#f8f5f7;
   }
   .invitation-card {
-    max-width:760px; width:100%;
-    border-radius:18px;
-    padding:48px 44px;
+    max-width:760px;width:100%;border-radius:18px;padding:48px 44px;
     background:url('./background.jpg') center/cover no-repeat;
-    box-shadow:0 25px 50px rgba(0,0,0,0.08);
-    position:relative;
+    box-shadow:0 25px 50px rgba(0,0,0,0.08);position:relative;
   }
   .invitation-card::after {
-    content:''; position:absolute; inset:0;
-    background:rgba(255,255,255,0.9);
-    border-radius:18px;
+    content:'';position:absolute;inset:0;background:rgba(255,255,255,0.9);border-radius:18px;
   }
-  .invitation-inner {
-    position:relative;
-    z-index:2;
-    text-align:center;
-  }
-  .invite-heading {
-    font-family:'Playfair Display', serif;
-    margin-bottom:18px;
-  }
-  .names {
-    font-family:'Great Vibes', cursive;
-    font-size:3.6rem;
-    color:var(--accent);
-  }
-  .parents {margin-top:16px; line-height:1.6;}
-  footer.inv {
-    margin-top:22px;
-    font-size:0.95rem;
-    color:#555;
-    line-height:1.7;
-  }
+  .invitation-inner {position:relative;z-index:2;text-align:center;}
+  .invite-heading {font-family:'Playfair Display',serif;margin-bottom:18px;}
+  .names {font-family:'Great Vibes',cursive;font-size:3.6rem;color:var(--accent);}
+  .parents {margin-top:16px;line-height:1.6;}
+  footer.inv {margin-top:22px;font-size:0.95rem;color:#555;line-height:1.7;}
 
   /* ===== CEREMONY ===== */
   .ceremony {
-    height:100vh;
-    background:url('./anjana_2.jpeg') center/cover no-repeat;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
+    height:100vh;background:url('./anjana_2.jpeg') center/cover no-repeat;position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;
   }
-  .ceremony::after {
-    content:''; position:absolute; inset:0;
-    background:rgba(0,0,0,0.45);
-  }
-  .ceremony-inner {
-    position:relative; z-index:2; max-width:600px; padding:20px;
-  }
-  .ceremony-inner h2 {
-    font-family:'Great Vibes', cursive;
-    font-size:3.5rem;
-    margin-bottom:10px;
-  }
+  .ceremony::after {content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
+  .ceremony-inner {position:relative;z-index:2;max-width:600px;padding:20px;}
+  .ceremony-inner h2 {font-family:'Great Vibes',cursive;font-size:3.5rem;margin-bottom:10px;}
   .ceremony-inner p {font-size:1.1rem;}
-  .countdown {
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    margin-top:20px;
-  }
-  .countdown div {text-align:center;}
-  .countdown span {
-    display:block;
-    font-size:1.8rem;
-    font-weight:600;
-  }
-  .countdown label {
-    font-size:0.8rem;
-    color:var(--muted);
-  }
+  .countdown {display:flex;justify-content:center;gap:18px;margin-top:20px;}
+  .countdown div{text-align:center;}
+  .countdown span{display:block;font-size:1.8rem;font-weight:600;}
+  .countdown label{font-size:0.8rem;color:var(--muted);}
 
   /* ===== GALLERY ===== */
   .gallery {
-    height:100vh;
-    background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
+    height:100vh;background:#000;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
   }
-  .gallery img {
-    position:absolute;
-    inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    opacity:0;
-    transition:opacity 1s ease;
-  }
+  .gallery img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;}
   .gallery img.active {opacity:1;}
-  .gallery-caption {
-    position:absolute;
-    bottom:20px;
-    width:100%;
-    text-align:center;
-    color:#fff;
-    font-size:1rem;
-  }
+  .gallery-caption {position:absolute;bottom:20px;width:100%;text-align:center;color:#fff;font-size:1rem;}
 
-  /* ===== WISHES & RSVP ===== */
+  /* ===== WISHES ===== */
   .wishes {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    background:url('./background.jpeg') center/cover no-repeat;
-    position:relative;
-    text-align:center;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:url('./background.jpeg') center/cover no-repeat;position:relative;text-align:center;
   }
-  .wishes::after {
-    content:''; position:absolute; inset:0;
-    background:rgba(255,255,255,0.85);
-  }
-  .wishes-inner {
-    position:relative; z-index:2; max-width:600px; padding:20px;
-  }
-  .wishes-inner h2 {
-    font-family:'Great Vibes', cursive;
-    font-size:3.2rem;
-    color:var(--accent);
-    margin-bottom:10px;
-  }
-  .wishes-inner p {font-size:1.05rem; margin-bottom:20px; color:#333;}
-  .wishes-inner textarea {
-    width:100%;
-    height:120px;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    margin-bottom:10px;
-    font-family:'Poppins';
-  }
-  .wishes-inner button {
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:10px 20px;
-    border-radius:30px;
-    cursor:pointer;
-    font-weight:600;
-  }
+  .wishes::after {content:'';position:absolute;inset:0;background:rgba(255,255,255,0.85);}
+  .wishes-inner {position:relative;z-index:2;max-width:600px;padding:20px;}
+  .wishes-inner h2 {font-family:'Great Vibes',cursive;font-size:3.2rem;color:var(--accent);margin-bottom:10px;}
+  .wishes-inner p {font-size:1.05rem;margin-bottom:20px;color:#333;}
+  .wishes-inner textarea {width:100%;height:120px;padding:10px;border-radius:8px;border:1px solid #ccc;margin-bottom:10px;font-family:'Poppins';}
+  .wishes-inner button {background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:30px;cursor:pointer;font-weight:600;}
   .wishes-inner button:hover {opacity:0.85;}
 
   /* ===== MUSIC CONTROL ===== */
   .music-control {
-    position:fixed;
-    right:22px; bottom:22px;
-    width:56px; height:56px;
-    background:rgba(255,255,255,0.8);
-    border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 6px 20px rgba(0,0,0,0.12);
-    cursor:pointer;
-    z-index:999;
-    font-size:20px;
+    position:fixed;right:22px;bottom:22px;width:56px;height:56px;
+    background:rgba(255,255,255,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,0.12);cursor:pointer;z-index:999;font-size:20px;
   }
   </style>
 </head>
-
 <body>
 
   <!-- ===== HERO ===== -->
@@ -277,17 +132,17 @@
     </div>
   </section>
 
-  <!-- ===== INVITATION CARD ===== -->
+  <!-- ===== INVITATION CARD (with fade-up animations) ===== -->
   <section class="card-wrap" id="invitation">
     <div class="invitation-card fade-up">
       <div class="invitation-inner">
-        <div class="invite-heading">Together with our beloved parents, we cordially invite you...</div>
-        <div class="names">Anjana &amp; Nandeesha</div>
-        <div class="parents">
+        <div class="invite-heading fade-up">Together with our beloved parents, we cordially invite you...</div>
+        <div class="names fade-up">Anjana &amp; Nandeesha</div>
+        <div class="parents fade-up">
           <div>Son to Mr. A. Wickramasinghe &amp; Mrs. Pathmini Jayasinghe</div>
           <div>Daughter to Mr. W. Balasooriya &amp; Mrs. Sirimali Edirisinghe</div>
         </div>
-        <footer class="inv">
+        <footer class="inv fade-up">
           Saturday, 06 December 2025 • 10:00 AM<br>
           Venue: Kingsbay Hotel
         </footer>
@@ -340,25 +195,15 @@
   </audio>
   <div class="music-control" id="musicControl">🔊</div>
 
-  <!-- ===== SCRIPTS ===== -->
   <script>
   /* ===== MUSIC CONTROL ===== */
   const audio = document.getElementById('bgAudio');
   const btn = document.getElementById('musicControl');
   let playing = false;
-
-  function toggleMusic() {
-    if (audio.paused) {
-      audio.play();
-      playing = true;
-      btn.textContent = '🔊';
-    } else {
-      audio.pause();
-      playing = false;
-      btn.textContent = '🔇';
-    }
-  }
-  btn.addEventListener('click', toggleMusic);
+  btn.addEventListener('click', () => {
+    if (audio.paused) { audio.play(); btn.textContent = '🔊'; }
+    else { audio.pause(); btn.textContent = '🔇'; }
+  });
 
   /* ===== COUNTDOWN TIMER ===== */
   const target = new Date("December 6, 2025 10:00:00").getTime();
@@ -386,7 +231,7 @@
   }, 3000);
 
   /* ===== SCROLL-TRIGGERED ANIMATIONS ===== */
-  const animatedEls = document.querySelectorAll('.fade-up, .fade-in');
+  const animatedEls = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -395,11 +240,7 @@
       }
     });
   }, { threshold: 0.2 });
-
-  animatedEls.forEach(el => {
-    el.style.animationPlayState = 'paused';
-    observer.observe(el);
-  });
+  animatedEls.forEach(el => observer.observe(el));
   </script>
 
 </body>
