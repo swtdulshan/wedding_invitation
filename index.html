@@ -278,9 +278,11 @@
     status.style.color = "gray";
     status.textContent = "Sending...";
     await fetch(scriptURL, {
-      method: "POST",
-      body: new URLSearchParams({ name, message })
-    });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name, message })
+});
+
     status.style.color = "green";
     status.textContent = "Thank you for your wish! ❤️";
     document.getElementById("guestName").value = "";
