@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anjana & Nandeesha — Wedding Invitation (Gold Theme)</title>
+  <title>Nandeesha & Anjana — Wedding Invitation (Gold Theme)</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -16,7 +16,7 @@
   * {box-sizing:border-box; margin:0; padding:0;}
   body {font-family:'Poppins', sans-serif; color:#111; overflow-x:hidden;}
 
-  /* === Intro Video Section === */
+  /* === INTRO VIDEO === */
   #introVideo {
     position:fixed; inset:0;
     background:#000;
@@ -32,6 +32,23 @@
     border-radius:40px; cursor:pointer; opacity:0; transition:opacity 1s ease;
   }
   #seeInvitationBtn.show {opacity:1;}
+
+  /* Music button on intro video */
+  #introVideo .music-control {
+    top: 22px;
+    right: 22px;
+    position: absolute;
+    z-index: 10000;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+  }
 
   /* === Animation === */
   @keyframes fadeUp {from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:none;}}
@@ -121,7 +138,7 @@
   .wishes-inner button:hover {opacity:0.85;}
   #statusMsg {margin-top:10px;font-weight:600;}
 
-  /* === Music Button === */
+  /* === Music Button Fixed === */
   .music-control {
     position:fixed;right:22px;bottom:22px;width:56px;height:56px;
     background:rgba(255,255,255,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -135,13 +152,15 @@
   <div id="introVideo">
     <video id="weddingIntro" src="./animation.mp4" autoplay muted playsinline></video>
     <button id="seeInvitationBtn">Open Invitation</button>
+    <!-- Music button on intro video -->
+    <div class="music-control" id="introMusicControl">🔊</div>
   </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner fade-up">
       <div class="top-sub">The Marriage of</div>
-      <div class="couple">Anjana &amp; Nandeesha</div>
+      <div class="couple">Nandeesha &amp; Anjana</div>
       <div class="date">05 · 12 · 2025</div>
       <div class="swipe" onclick="document.getElementById('invitation').scrollIntoView({behavior:'smooth'});">
         <div class="arrow"></div><div>Swipe Up</div>
@@ -188,7 +207,6 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.597645163155!2d80.12579137452144!3d6.938833993051416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb30799824ff%3A0x8e83b164a66a19f8!2sLavenro%20Garden%20Hotel!5e0!3m2!1sen!2slk!4v1689234567890!5m2!1sen!2slk"
         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <!-- ✅ Fixed Get Directions Link -->
     <a href="https://www.google.com/maps/dir/?api=1&destination=Lavenro+Garden+Hotel,+Kosgama,+Sri+Lanka"
        target="_blank" class="map-btn fade-up">Get Directions</a>
   </section>
@@ -218,6 +236,7 @@
     </div>
   </section>
 
+  <!-- AUDIO -->
   <audio id="bgAudio" loop><source src="./guitar.mp3" type="audio/mpeg"></audio>
   <div class="music-control" id="musicControl">🔊</div>
 
@@ -226,12 +245,43 @@
   const video=document.getElementById('weddingIntro');
   const seeBtn=document.getElementById('seeInvitationBtn');
   const audio=document.getElementById('bgAudio');
+  const introMusicControl=document.getElementById('introMusicControl');
 
+  // Attempt autoplay
+  audio.play().catch(()=>console.log("Autoplay prevented, user interaction required."));
+
+  // Show Open Invitation button after 15s or when video ends
   setTimeout(()=>seeBtn.classList.add('show'),15000);
   video.addEventListener('ended',()=>seeBtn.classList.add('show'));
-  seeBtn.onclick=()=>{intro.style.opacity=0;setTimeout(()=>intro.style.display='none',1000);audio.play();};
 
-  document.getElementById('musicControl').onclick=()=>{audio.paused?(audio.play(),musicControl.textContent='🔊'):(audio.pause(),musicControl.textContent='🔇');};
+  // Open Invitation button
+  seeBtn.onclick=()=>{
+    intro.style.opacity=0;
+    document.body.style.overflow='auto';
+    setTimeout(()=>intro.style.display='none',1000);
+  };
+
+  // Prevent scroll during intro
+  document.body.style.overflow='hidden';
+
+  // Music button on intro video
+  introMusicControl.onclick = () => {
+    if(audio.paused){
+      audio.play(); introMusicControl.textContent='🔊';
+    } else {
+      audio.pause(); introMusicControl.textContent='🔇';
+    }
+  };
+
+  // Music control button after intro
+  const musicControl=document.getElementById('musicControl');
+  musicControl.onclick=()=>{
+    if(audio.paused){
+      audio.play(); musicControl.textContent='🔊';
+    } else {
+      audio.pause(); musicControl.textContent='🔇';
+    }
+  };
 
   // Countdown
   const target=new Date("December 5, 2025 10:00:00").getTime();
@@ -253,22 +303,14 @@
   document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
   // WhatsApp Wish Sender
-  const sendBtn=document.getElementById("sendWish");
-  sendBtn.addEventListener("click",()=>{
+  const sendBtn2=document.getElementById("sendWish");
+  sendBtn2.addEventListener("click",()=>{
     const name=document.getElementById("guestName").value.trim();
     const msg=document.getElementById("guestMessage").value.trim();
-    const status=document.getElementById("statusMsg");
-    if(!name||!msg){status.style.color="red";status.textContent="Please enter your name and message.";return;}
-    status.style.color="gray";status.textContent="Sending your message...";
-    const encoded=encodeURIComponent(`💌 Wedding Wish 💍\nFrom: ${name}\nMessage: ${msg}`);
-    const num1="94710417588";
-    const num2="94718544675";
-    window.open(`https://wa.me/${num1}?text=${encoded}`,'_blank');
-    setTimeout(()=>window.open(`https://wa.me/${num2}?text=${encoded}`,'_blank'),1000);
-    document.getElementById("guestName").value="";
-    document.getElementById("guestMessage").value="";
-    status.style.color="green";
-    status.textContent="Thank you! Your wish was sent privately ❤️";
+    if(!name||!msg){document.getElementById("statusMsg").textContent="Please fill both fields.";return;}
+    const waMsg=encodeURIComponent(`Hi Anjana & Nandeesha, \nFrom: ${name} \nMessage: ${msg}`);
+    window.open(`https://wa.me/94712345678?text=${waMsg}`,"_blank");
+    document.getElementById("statusMsg").textContent="Sent via WhatsApp!";
   });
   </script>
 </body>
