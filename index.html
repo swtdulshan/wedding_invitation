@@ -133,10 +133,12 @@
 <body>
 
   <!-- INTRO VIDEO -->
+   
   <div id="introVideo">
     <video id="weddingIntro" src="./animation.mp4" autoplay muted playsinline></video>
     <button id="seeInvitationBtn">Open Invitation</button>
   </div>
+ 
 
   <!-- HERO -->
   <section class="hero">
@@ -154,13 +156,13 @@
   <section class="card-wrap" id="invitation">
     <div class="invitation-card fade-up">
       <div class="invitation-inner">
-        <div class="invite-heading fade-up">Together with our beloved parents, we cordially invite you...</div>
-        <div class="names fade-up">Anjana &amp; Nandeesha</div>
+        <div class="invite-heading fade-up">TogeTogether with our beloved parents, we cordially invite you to honor us with your presence as we celebrate our union at our wedding reception....</div>
+        <div class="names fade-up">Nandeesha <br>&amp; <br>Anjana</div>
         <div class="parents fade-up">
-          <div>Son to Mr. A. Wickramasinghe &amp; Mrs. Pathmini Jayasinghe</div>
-          <div>Daughter to Mr. W. Balasooriya &amp; Mrs. Sirimali Edirisinghe</div>
+          <div>Daughter to Mr. geeganage &amp; Mrs. geeganage</div>
+          <div>Son to Mr. senarathna &amp; Mrs. senarathna</div>
         </div>
-        <footer class="inv fade-up">Saturday, 05 December 2025 • 10:00 AM<br>Venue: Kingsbay Hotel</footer>
+        <footer class="inv fade-up">Saturday, 05 December 2025 • 10:00 AM<br>Venue: Lavenro Garden Hotel, kosgama</footer>
       </div>
     </div>
   </section>
@@ -169,7 +171,7 @@
   <section class="ceremony" id="ceremony">
     <div class="ceremony-inner fade-up">
       <h2>Poruwa Ceremony</h2>
-      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>on 05 December 2025 at Kingsbay Hotel</p>
+      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>Friday, 05 December 2025 , 8.30 A.M at Lavenro Garden Hotel, kosgama</p>
       <div class="countdown">
         <div><span id="days">0</span><label>Days</label></div>
         <div><span id="hours">0</span><label>Hours</label></div>
@@ -218,6 +220,9 @@
   const audio = document.getElementById('bgAudio');
 
   // Show button after 8 seconds or when video ends
+
+// video starting place
+
   setTimeout(() => {
     seeBtn.classList.add('show');
   }, 15000);
@@ -232,6 +237,9 @@
     setTimeout(()=>intro.style.display='none',1000);
     audio.play();
   };
+
+
+  //video ending place
 
   // Music Control
   const btn = document.getElementById('musicControl');
