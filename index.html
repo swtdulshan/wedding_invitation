@@ -35,9 +35,9 @@
 
   /* Music button on intro video */
   #introVideo .music-control {
-    top: 22px;
-    right: 22px;
     position: absolute;
+    right: 22px;
+    bottom: 22px;
     z-index: 10000;
     width: 50px;
     height: 50px;
@@ -152,7 +152,7 @@
   <div id="introVideo">
     <video id="weddingIntro" src="./animation.mp4" autoplay muted playsinline></video>
     <button id="seeInvitationBtn">Open Invitation</button>
-    <!-- Music button on intro video -->
+    <!-- Music button on intro video at bottom-right -->
     <div class="music-control" id="introMusicControl">🔊</div>
   </div>
 
@@ -307,10 +307,12 @@
   sendBtn2.addEventListener("click",()=>{
     const name=document.getElementById("guestName").value.trim();
     const msg=document.getElementById("guestMessage").value.trim();
-    if(!name||!msg){document.getElementById("statusMsg").textContent="Please fill both fields.";return;}
-    const waMsg=encodeURIComponent(`Hi Anjana & Nandeesha, \nFrom: ${name} \nMessage: ${msg}`);
-    window.open(`https://wa.me/94712345678?text=${waMsg}`,"_blank");
-    document.getElementById("statusMsg").textContent="Sent via WhatsApp!";
+    if(!name||!msg){document.getElementById("statusMsg").textContent="Please enter name and message."; return;}
+    const phone="947xxxxxxx";
+    const text=encodeURIComponent(`Name: ${name}\nMessage: ${msg}`);
+    const url=`https://wa.me/${phone}?text=${text}`;
+    window.open(url,"_blank");
+    document.getElementById("statusMsg").textContent="Redirecting to WhatsApp...";
   });
   </script>
 </body>
