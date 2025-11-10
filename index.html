@@ -308,7 +308,7 @@
     const name=document.getElementById("guestName").value.trim();
     const msg=document.getElementById("guestMessage").value.trim();
     if(!name||!msg){document.getElementById("statusMsg").textContent="Please enter name and message."; return;}
-    const phone="947xxxxxxx";
+    const phone="94710417588";
     const text=encodeURIComponent(`Name: ${name}\nMessage: ${msg}`);
     const url=`https://wa.me/${phone}?text=${text}`;
     window.open(url,"_blank");
