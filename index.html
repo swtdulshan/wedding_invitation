@@ -24,9 +24,7 @@
     z-index:9999;
     transition:opacity 1s ease;
   }
-  #introVideo video {
-    width:100%; height:100%; object-fit:cover;
-  }
+  #introVideo video {width:100%; height:100%; object-fit:cover;}
   #seeInvitationBtn {
     position:absolute; bottom:5%; left:50%; transform:translateX(-50%);
     background:var(--accent); color:#fff; border:none;
@@ -37,7 +35,6 @@
 
   /* === Animation === */
   @keyframes fadeUp {from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:none;}}
-  /* The animation-play-state:paused is essential for JavaScript control */
   .fade-up {animation:fadeUp 1.2s ease both; animation-play-state:paused;}
 
   @keyframes bounce {
@@ -60,10 +57,8 @@
     border-bottom:3px solid var(--muted);transform:rotate(-45deg);animation:bounce 1.8s infinite;}
 
   /* === Invitation Card === */
-  .card-wrap {
-    min-height:100vh;display:flex;align-items:center;justify-content:center;
-    padding:60px 20px;background:#f8f5f7;
-  }
+  .card-wrap {min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:60px 20px;background:#f8f5f7;}
   .invitation-card {
     max-width:760px;width:100%;border-radius:18px;padding:48px 44px;
     background:url('./background.jpg') center/cover no-repeat;
@@ -88,44 +83,30 @@
   .ceremony-inner h2 {font-family:'Great Vibes',cursive;font-size:3.5rem;margin-bottom:10px;}
   .countdown {display:flex;justify-content:center;gap:18px;margin-top:20px;}
   .countdown span{display:block;font-size:1.8rem;font-weight:600;}
-  .countdown label {font-size:0.8rem; color:var(--muted);} /* Added missing label style */
+  .countdown label {font-size:0.8rem; color:var(--muted);}
 
   /* === Map Section === */
-  .map-section {
-    min-height:70vh; padding:60px 20px; text-align:center;
-    background:#fff; /* Light background for contrast */
-  }
-  .map-container {
-    max-width:800px; margin:20px auto 0;
-    box-shadow:0 4px 20px rgba(0,0,0,0.1); border-radius:10px; overflow:hidden;
-  }
-  .map-container iframe {
-    width:100%; height:400px; border:0; display:block;
-  }
-  .map-section h2 {
-    font-family:'Great Vibes',cursive; font-size:3.2rem; color:var(--accent); margin-bottom:10px;
-  }
+  .map-section {min-height:70vh; padding:60px 20px; text-align:center; background:#fff;}
+  .map-container {max-width:800px; margin:20px auto 0; box-shadow:0 4px 20px rgba(0,0,0,0.1); border-radius:10px; overflow:hidden;}
+  .map-container iframe {width:100%; height:400px; border:0; display:block;}
+  .map-section h2 {font-family:'Great Vibes',cursive; font-size:3.2rem; color:var(--accent); margin-bottom:10px;}
   .map-section p {margin-bottom:20px; color:#555;}
   .map-btn {
     background:var(--accent); color:#fff; border:none; padding:10px 20px;
-    border-radius:30px; cursor:pointer; font-weight:600; text-decoration:none; display:inline-block; margin-top:15px;
+    border-radius:30px; cursor:pointer; font-weight:600; text-decoration:none;
+    display:inline-block; margin-top:15px;
   }
   .map-btn:hover {opacity:0.9;}
 
   /* === Gallery === */
-  .gallery {
-    height:100vh;background:#000;display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-  }
+  .gallery {height:100vh;background:#000;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
   .gallery img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;}
   .gallery img.active {opacity:1;}
   .gallery-caption {position:absolute;bottom:20px;width:100%;text-align:center;color:#fff;font-size:1rem;}
 
   /* === Wishes === */
-  .wishes {
-    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:url('./background.jpeg') center/cover no-repeat;position:relative;text-align:center;
-  }
+  .wishes {min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:url('./background.jpeg') center/cover no-repeat;position:relative;text-align:center;}
   .wishes::after {content:'';position:absolute;inset:0;background:rgba(255,255,255,0.85);}
   .wishes-inner {position:relative;z-index:2;max-width:600px;padding:20px;}
   .wishes-inner h2 {font-family:'Great Vibes',cursive;font-size:3.2rem;color:var(--accent);margin-bottom:10px;}
@@ -138,13 +119,7 @@
     background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:30px;cursor:pointer;font-weight:600;
   }
   .wishes-inner button:hover {opacity:0.85;}
-  #wishesList {max-height:300px;overflow-y:auto;text-align:left;margin-top:20px;}
-  .wish-item {
-    background:rgba(255,255,255,0.9);padding:12px 15px;border-radius:10px;margin-bottom:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-  }
-  .wish-name {font-weight:600;color:var(--accent);}
-  .wish-text {color:#333;margin-top:4px;font-size:0.95rem;}
+  #statusMsg {margin-top:10px;font-weight:600;}
 
   /* === Music Button === */
   .music-control {
@@ -154,13 +129,15 @@
   }
   </style>
 </head>
-<body>
 
+<body>
+  <!-- INTRO VIDEO -->
   <div id="introVideo">
     <video id="weddingIntro" src="./animation.mp4" autoplay muted playsinline></video>
     <button id="seeInvitationBtn">Open Invitation</button>
   </div>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner fade-up">
       <div class="top-sub">The Marriage of</div>
@@ -172,24 +149,26 @@
     </div>
   </section>
 
+  <!-- INVITATION -->
   <section class="card-wrap" id="invitation">
     <div class="invitation-card fade-up">
       <div class="invitation-inner">
-        <div class="invite-heading fade-up">Together with our beloved parents, we cordially invite you to honor us with your presence as we celebrate our union at our wedding reception....</div>
+        <div class="invite-heading fade-up">Together with our beloved parents, we cordially invite you to honor us with your presence...</div>
         <div class="names fade-up">Nandeesha <br>&amp; <br>Anjana</div>
         <div class="parents fade-up">
-          <div>Daughter to Mr. geeganage &amp; Mrs. geeganage</div>
-          <div>Son to Mr. senarathna &amp; Mrs. senarathna</div>
+          <div>Daughter to Mr &amp; Mrs. Geeganage</div>
+          <div>Son to Mr &amp; Mrs. Senarathna</div>
         </div>
-        <footer class="inv fade-up">Friday, 05 December 2025 • 08:30 AM<br>Venue: Lavenro Garden Hotel, kosgama</footer>
+        <footer class="inv fade-up">Friday, 05 December 2025 • 08:30 AM<br>Venue: Lavenro Garden Hotel, Kosgama</footer>
       </div>
     </div>
   </section>
 
+  <!-- CEREMONY -->
   <section class="ceremony" id="ceremony">
     <div class="ceremony-inner fade-up">
       <h2>Poruwa Ceremony</h2>
-      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>Friday, 05 December 2025, 9.00 A.M at Lavenro Garden Hotel, kosgama</p>
+      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>Friday, 05 December 2025, 9.00 A.M at Lavenro Garden Hotel, Kosgama</p>
       <div class="countdown">
         <div><span id="days">0</span><label>Days</label></div>
         <div><span id="hours">0</span><label>Hours</label></div>
@@ -199,20 +178,22 @@
     </div>
   </section>
 
+  <!-- MAP -->
   <section class="map-section" id="location">
     <div class="fade-up">
       <h2>Wedding Venue Location</h2>
-      <p>Find your way to **Lavenro Garden Hotel, Kosgama** easily.</p>
+      <p>Find your way to <strong>Lavenro Garden Hotel, Kosgama</strong> easily.</p>
     </div>
     <div class="map-container fade-up">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.597645163155!2d80.12579137452144!3d6.938833993051416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb30799824ff%3A0x8e83b164a66a19f8!2sLavenro%20Garden%20Hotel!5e0!3m2!1sen!2slk!4v1689234567890!5m2!1sen!2slk" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.597645163155!2d80.12579137452144!3d6.938833993051416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb30799824ff%3A0x8e83b164a66a19f8!2sLavenro%20Garden%20Hotel!5e0!3m2!1sen!2slk!4v1689234567890!5m2!1sen!2slk"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/YourDirectionsLinkHere" target="_blank" class="map-btn fade-up">Get Directions</a>
+    <!-- ✅ Fixed Get Directions Link -->
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Lavenro+Garden+Hotel,+Kosgama,+Sri+Lanka"
+       target="_blank" class="map-btn fade-up">Get Directions</a>
   </section>
-  
+
+  <!-- GALLERY -->
   <section class="gallery">
     <img src="./anjana_3.jpeg" class="active" alt="Couple Photo 1">
     <img src="./anjana_4.jpeg" alt="Couple Photo 2">
@@ -225,50 +206,34 @@
     <div class="gallery-caption">Our Journey Together</div>
   </section>
 
+  <!-- WISHES -->
   <section class="wishes" id="wishes">
     <div class="wishes-inner fade-up">
       <h2>Wishes &amp; RSVP</h2>
-      <p>Send us your blessings or confirm your attendance.</p>
+      <p>Send your blessings directly to us ❤️</p>
       <input id="guestName" type="text" placeholder="Your Name">
       <textarea id="guestMessage" placeholder="Write your wishes here..."></textarea>
       <button id="sendWish">Send</button>
-
-      </div>
+      <div id="statusMsg"></div>
+    </div>
   </section>
 
   <audio id="bgAudio" loop><source src="./guitar.mp3" type="audio/mpeg"></audio>
   <div class="music-control" id="musicControl">🔊</div>
 
   <script>
-  const intro = document.getElementById('introVideo');
-  const video = document.getElementById('weddingIntro');
-  const seeBtn = document.getElementById('seeInvitationBtn');
-  const audio = document.getElementById('bgAudio');
+  const intro=document.getElementById('introVideo');
+  const video=document.getElementById('weddingIntro');
+  const seeBtn=document.getElementById('seeInvitationBtn');
+  const audio=document.getElementById('bgAudio');
 
-  // Show button after 15 seconds (your original value) or when video ends
-  setTimeout(() => {
-    seeBtn.classList.add('show');
-  }, 15000);
+  setTimeout(()=>seeBtn.classList.add('show'),15000);
+  video.addEventListener('ended',()=>seeBtn.classList.add('show'));
+  seeBtn.onclick=()=>{intro.style.opacity=0;setTimeout(()=>intro.style.display='none',1000);audio.play();};
 
-  video.addEventListener('ended', () => {
-    seeBtn.classList.add('show');
-  });
+  document.getElementById('musicControl').onclick=()=>{audio.paused?(audio.play(),musicControl.textContent='🔊'):(audio.pause(),musicControl.textContent='🔇');};
 
-  // When clicked: hide video + play music
-  seeBtn.onclick = () => {
-    intro.style.opacity = 0;
-    setTimeout(()=>intro.style.display='none',1000);
-    audio.play();
-  };
-
-  // Music Control
-  const btn = document.getElementById('musicControl');
-  btn.onclick = () => {
-    if(audio.paused){audio.play();btn.textContent='🔊';}
-    else{audio.pause();btn.textContent='🔇';}
-  };
-
-  // Countdown (Target set to Dec 5, 2025 10:00:00, slightly after 9:00 AM ceremony)
+  // Countdown
   const target=new Date("December 5, 2025 10:00:00").getTime();
   setInterval(()=>{
     const diff=target-new Date().getTime();
@@ -279,64 +244,32 @@
     document.getElementById('seconds').textContent=Math.floor((diff%(1000*60))/1000);
   },1000);
 
-  // Gallery slideshow
+  // Gallery
   const imgs=document.querySelectorAll('.gallery img');let i=0;
   setInterval(()=>{imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');},3000);
 
-  // Fade animations (Intersection Observer)
-  // This code ensures animations only run when the section scrolls into view
-  const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.style.animationPlayState='running';observer.unobserve(e.target);}
-    });
-  },{threshold:0.2});
+  // Fade animations
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.animationPlayState='running';observer.unobserve(e.target);}});},{threshold:0.2});
   document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-  // Wishes - Google Sheet functions (currently commented out in HTML)
-  const scriptURL="https://script.google.com/macros/s/AKfycbwDtuTzaTjjr4_A8XlKOfEkp6f_IMDS0iRYTydsJvloO_MbU7eIY28Zllxr-bd8WKAQ/exec";
-
-  async function loadWishes(){
-    try{
-      const res=await fetch(scriptURL+"?v="+Date.now());
-      const data=await res.json();
-      const list=document.getElementById("wishesList");
-      list.innerHTML="";
-      data.reverse().forEach(wish=>{
-        const div=document.createElement("div");
-        div.className="wish-item";
-        div.innerHTML=`<div class='wish-name'>${wish.name}</div><div class='wish-text'>${wish.message}</div>`;
-        list.appendChild(div);
-      });
-    }catch(err){console.error("Load error",err);}
-  }
-
-  async function sendWish(){
+  // WhatsApp Wish Sender
+  const sendBtn=document.getElementById("sendWish");
+  sendBtn.addEventListener("click",()=>{
     const name=document.getElementById("guestName").value.trim();
-    const message=document.getElementById("guestMessage").value.trim();
+    const msg=document.getElementById("guestMessage").value.trim();
     const status=document.getElementById("statusMsg");
-    if(!name||!message){/* If statusMsg is used: status.style.color="red";status.textContent="Please enter your name and message!";*/ return;}
-    /* If statusMsg is used: status.style.color="gray";status.textContent="Sending..."; */
-    const list=document.getElementById("wishesList");
-    const div=document.createElement("div");
-    div.className="wish-item";
-    div.innerHTML=`<div class='wish-name'>${name}</div><div class='wish-text'>${message}</div>`;
-    list.prepend(div);
-    try{
-      await fetch(scriptURL,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({name,message})
-      });
-      /* If statusMsg is used: status.style.color="green";status.textContent="Thank you for your wish ❤️"; */
-      document.getElementById("guestName").value="";
-      document.getElementById("guestMessage").value="";
-    }catch(e){/* If statusMsg is used: status.style.color="red";status.textContent="Error sending wish. Try again."; */}
-  }
-
-  document.getElementById("sendWish").addEventListener("click",sendWish);
-  // Uncomment the line below if you re-enable the wishes list section
-  // window.addEventListener("load",()=>{loadWishes();setInterval(loadWishes,10000);});
+    if(!name||!msg){status.style.color="red";status.textContent="Please enter your name and message.";return;}
+    status.style.color="gray";status.textContent="Sending your message...";
+    const encoded=encodeURIComponent(`💌 Wedding Wish 💍\nFrom: ${name}\nMessage: ${msg}`);
+    const num1="94710417588";
+    const num2="94718544675";
+    window.open(`https://wa.me/${num1}?text=${encoded}`,'_blank');
+    setTimeout(()=>window.open(`https://wa.me/${num2}?text=${encoded}`,'_blank'),1000);
+    document.getElementById("guestName").value="";
+    document.getElementById("guestMessage").value="";
+    status.style.color="green";
+    status.textContent="Thank you! Your wish was sent privately ❤️";
+  });
   </script>
-
 </body>
 </html>
