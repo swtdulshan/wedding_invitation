@@ -16,10 +16,27 @@
   * {box-sizing:border-box; margin:0; padding:0;}
   body {font-family:'Poppins', sans-serif; color:#111; overflow-x:hidden;}
 
-  @keyframes fadeUp {
-    from {opacity:0; transform:translateY(40px);}
-    to {opacity:1; transform:none;}
+  /* === Intro Video Section === */
+  #introVideo {
+    position:fixed; inset:0;
+    background:#000;
+    display:flex; align-items:center; justify-content:center;
+    z-index:9999;
+    transition:opacity 1s ease;
   }
+  #introVideo video {
+    width:100%; height:100%; object-fit:cover;
+  }
+  #seeInvitationBtn {
+    position:absolute; bottom:5%; left:50%; transform:translateX(-50%);
+    background:var(--accent); color:#fff; border:none;
+    font-size: small; font-weight:600; padding:14px 30px;
+    border-radius:40px; cursor:pointer; opacity:0; transition:opacity 1s ease;
+  }
+  #seeInvitationBtn.show {opacity:1;}
+
+  /* === Animation === */
+  @keyframes fadeUp {from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:none;}}
   .fade-up {animation:fadeUp 1.2s ease both; animation-play-state:paused;}
 
   @keyframes bounce {
@@ -27,12 +44,10 @@
     50% {transform:translateY(-10px) rotate(-45deg);}
   }
 
-  /* --- Sections --- */
+  /* === Hero === */
   .hero {
-    height:100vh;
-    display:flex; align-items:flex-end; justify-content:center;
-    background:url('./anjana_1.jpeg') center/cover no-repeat;
-    position:relative; text-align:center;
+    height:100vh; display:flex; align-items:flex-end; justify-content:center;
+    background:url('./anjana_7.jpeg') center/cover no-repeat; position:relative; text-align:center;
   }
   .hero::after {content:''; position:absolute; inset:0; background:rgba(0,0,0,0.45);}
   .hero-inner {position:relative; z-index:2; color:#fff; padding-bottom:120px;}
@@ -43,6 +58,7 @@
   .swipe .arrow {display:inline-block;width:30px;height:30px;border-left:3px solid var(--muted);
     border-bottom:3px solid var(--muted);transform:rotate(-45deg);animation:bounce 1.8s infinite;}
 
+  /* === Invitation Card === */
   .card-wrap {
     min-height:100vh;display:flex;align-items:center;justify-content:center;
     padding:60px 20px;background:#f8f5f7;
@@ -61,8 +77,9 @@
   .parents {margin-top:16px;line-height:1.6;}
   footer.inv {margin-top:22px;font-size:0.95rem;color:#555;line-height:1.7;}
 
+  /* === Ceremony === */
   .ceremony {
-    height:100vh;background:url('./anjana_2.jpeg') center/cover no-repeat;position:relative;
+    height:100vh;background:url('./anjana_9.jpeg') center/cover no-repeat;position:relative;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;
   }
   .ceremony::after {content:'';position:absolute;inset:0;background:rgba(0,0,0,0.45);}
@@ -71,6 +88,7 @@
   .countdown {display:flex;justify-content:center;gap:18px;margin-top:20px;}
   .countdown span{display:block;font-size:1.8rem;font-weight:600;}
 
+  /* === Gallery === */
   .gallery {
     height:100vh;background:#000;display:flex;align-items:center;justify-content:center;
     position:relative;overflow:hidden;
@@ -79,7 +97,7 @@
   .gallery img.active {opacity:1;}
   .gallery-caption {position:absolute;bottom:20px;width:100%;text-align:center;color:#fff;font-size:1rem;}
 
-  /* --- Wishes --- */
+  /* === Wishes === */
   .wishes {
     min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:url('./background.jpeg') center/cover no-repeat;position:relative;text-align:center;
@@ -96,9 +114,7 @@
     background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:30px;cursor:pointer;font-weight:600;
   }
   .wishes-inner button:hover {opacity:0.85;}
-  #wishesList {
-    max-height:300px;overflow-y:auto;text-align:left;margin-top:20px;
-  }
+  #wishesList {max-height:300px;overflow-y:auto;text-align:left;margin-top:20px;}
   .wish-item {
     background:rgba(255,255,255,0.9);padding:12px 15px;border-radius:10px;margin-bottom:10px;
     box-shadow:0 2px 8px rgba(0,0,0,0.05);
@@ -106,6 +122,7 @@
   .wish-name {font-weight:600;color:var(--accent);}
   .wish-text {color:#333;margin-top:4px;font-size:0.95rem;}
 
+  /* === Music Button === */
   .music-control {
     position:fixed;right:22px;bottom:22px;width:56px;height:56px;
     background:rgba(255,255,255,0.8);border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -115,12 +132,18 @@
 </head>
 <body>
 
+  <!-- INTRO VIDEO -->
+  <div id="introVideo">
+    <video id="weddingIntro" src="./animation.mp4" autoplay muted playsinline></video>
+    <button id="seeInvitationBtn">Open Invitation</button>
+  </div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner fade-up">
       <div class="top-sub">The Marriage of</div>
       <div class="couple">Anjana &amp; Nandeesha</div>
-      <div class="date">06 · 12 · 2025</div>
+      <div class="date">05 · 12 · 2025</div>
       <div class="swipe" onclick="document.getElementById('invitation').scrollIntoView({behavior:'smooth'});">
         <div class="arrow"></div><div>Swipe Up</div>
       </div>
@@ -137,10 +160,7 @@
           <div>Son to Mr. A. Wickramasinghe &amp; Mrs. Pathmini Jayasinghe</div>
           <div>Daughter to Mr. W. Balasooriya &amp; Mrs. Sirimali Edirisinghe</div>
         </div>
-        <footer class="inv fade-up">
-          Saturday, 06 December 2025 • 10:00 AM<br>
-          Venue: Kingsbay Hotel
-        </footer>
+        <footer class="inv fade-up">Saturday, 05 December 2025 • 10:00 AM<br>Venue: Kingsbay Hotel</footer>
       </div>
     </div>
   </section>
@@ -149,7 +169,7 @@
   <section class="ceremony" id="ceremony">
     <div class="ceremony-inner fade-up">
       <h2>Poruwa Ceremony</h2>
-      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>on 06 December 2025 at Kingsbay Hotel</p>
+      <p class="fade-up">Join us for the sacred Poruwa Ceremony<br>on 05 December 2025 at Kingsbay Hotel</p>
       <div class="countdown">
         <div><span id="days">0</span><label>Days</label></div>
         <div><span id="hours">0</span><label>Hours</label></div>
@@ -192,14 +212,38 @@
   <div class="music-control" id="musicControl">🔊</div>
 
   <script>
+  const intro = document.getElementById('introVideo');
+  const video = document.getElementById('weddingIntro');
+  const seeBtn = document.getElementById('seeInvitationBtn');
   const audio = document.getElementById('bgAudio');
+
+  // Show button after 8 seconds or when video ends
+  setTimeout(() => {
+    seeBtn.classList.add('show');
+  }, 15000);
+
+  video.addEventListener('ended', () => {
+    seeBtn.classList.add('show');
+  });
+
+  // When clicked: hide video + play music
+  seeBtn.onclick = () => {
+    intro.style.opacity = 0;
+    setTimeout(()=>intro.style.display='none',1000);
+    audio.play();
+  };
+
+  // Music Control
   const btn = document.getElementById('musicControl');
-  btn.onclick = () => { if(audio.paused){audio.play();btn.textContent='🔊';} else {audio.pause();btn.textContent='🔇';} };
+  btn.onclick = () => {
+    if(audio.paused){audio.play();btn.textContent='🔊';}
+    else{audio.pause();btn.textContent='🔇';}
+  };
 
   // Countdown
-  const target = new Date("December 6, 2025 10:00:00").getTime();
+  const target=new Date("December 5, 2025 10:00:00").getTime();
   setInterval(()=>{
-    const diff = target - new Date().getTime();
+    const diff=target-new Date().getTime();
     if(diff<0)return;
     document.getElementById('days').textContent=Math.floor(diff/(1000*60*60*24));
     document.getElementById('hours').textContent=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
@@ -207,20 +251,24 @@
     document.getElementById('seconds').textContent=Math.floor((diff%(1000*60))/1000);
   },1000);
 
-  // Gallery
+  // Gallery slideshow
   const imgs=document.querySelectorAll('.gallery img');let i=0;
   setInterval(()=>{imgs[i].classList.remove('active');i=(i+1)%imgs.length;imgs[i].classList.add('active');},3000);
 
-  // Animations
-  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.animationPlayState='running';observer.unobserve(e.target);}});},{threshold:0.2});
+  // Fade animations
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.style.animationPlayState='running';observer.unobserve(e.target);}
+    });
+  },{threshold:0.2});
   document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-  // Wishes System
+  // Wishes - Google Sheet
   const scriptURL="https://script.google.com/macros/s/AKfycbwDtuTzaTjjr4_A8XlKOfEkp6f_IMDS0iRYTydsJvloO_MbU7eIY28Zllxr-bd8WKAQ/exec";
 
   async function loadWishes(){
     try{
-      const res=await fetch(scriptURL+"?v="+Date.now()); // prevent cache
+      const res=await fetch(scriptURL+"?v="+Date.now());
       const data=await res.json();
       const list=document.getElementById("wishesList");
       list.innerHTML="";
@@ -239,32 +287,25 @@
     const status=document.getElementById("statusMsg");
     if(!name||!message){status.style.color="red";status.textContent="Please enter your name and message!";return;}
     status.style.color="gray";status.textContent="Sending...";
-    
-    // Instantly add to the list (optimistic UI)
     const list=document.getElementById("wishesList");
     const div=document.createElement("div");
     div.className="wish-item";
     div.innerHTML=`<div class='wish-name'>${name}</div><div class='wish-text'>${message}</div>`;
     list.prepend(div);
-
-    // Send to Google Sheets
     try{
       await fetch(scriptURL,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({name,message})
       });
-      status.style.color="green";
-      status.textContent="Thank you for your wish ❤️";
+      status.style.color="green";status.textContent="Thank you for your wish ❤️";
       document.getElementById("guestName").value="";
       document.getElementById("guestMessage").value="";
-    }catch(e){
-      status.style.color="red";status.textContent="Error sending wish. Try again.";
-    }
+    }catch(e){status.style.color="red";status.textContent="Error sending wish. Try again.";}
   }
 
   document.getElementById("sendWish").addEventListener("click",sendWish);
-  window.addEventListener("load",loadWishes);
+  window.addEventListener("load",()=>{loadWishes();setInterval(loadWishes,10000);});
   </script>
 
 </body>
